@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- Test List View -->
+    <record id="test_list_view" model="ir.ui.view">
+        <field name="name">test.list.view</field>
+        <field name="model">test</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="test_description"/>
+                <field name="related_user"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Test Form View -->
+    <record id="test_form_view" model="ir.ui.view">
+        <field name="name">test.form.view</field>
+        <field name="model">test</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group colspan="4" col="4">
+                        <field name="name"/>
+                        <field name="test_description"/>
+                        <field name="related_user"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Test Action View -->
+    <record id="action_test" model="ir.actions.act_window">
+        <field name="name">Test</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">test</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

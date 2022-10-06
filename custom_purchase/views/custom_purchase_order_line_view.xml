@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="custom_purchase_order_line" model="ir.ui.view">
+        <field name="name">custom.purchase.order.line</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header//button[@name='button_draft']" position="after">
+                <button name="%(custom_purchase.product_form_action_wizard)d" string="Update Custom Line" type="action"/>
+                <button name="send_bill" string="Send Data in Bill" type="object"/>
+            </xpath>
+            <notebook position="inside">
+                <page string="Custom Products">
+                    <field name="custom_product_line">
+                        <tree editable="bottom">
+                            <field name="product_id"/>
+                            <field name="quantity"/>
+                            <field name="unit_price"/>
+                            <field name="subtotal"/>
+                        </tree>
+                    </field>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+</odoo>

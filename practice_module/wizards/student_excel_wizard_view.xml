@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+
+<!-- Student Excel Wizard View -->
+    <record id="student_excel_wizard" model="ir.ui.view">
+        <field name="name">student.excel.wizard</field>
+        <field name="model">student.excel</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group colspan="4" col="4" string="Student Record">
+                        <field name="name" placeholder="Enter your first name"/>
+                        <field name="last_name" placeholder="Enter your first name"/>
+                        <field name="dob" placeholder="Enter your date of birth"/>
+                        <field name="gender" placeholder="Choose your gender"/>
+                        <field name="mobile" placeholder="Enter your contact no."/>
+                        <field name="department_id" placeholder="Choose department"/>
+                        <field name="is_graduated" help="Select if the student has graduated"/>
+                        <field name="admission"/>
+                        <field name="fees"/>
+                        <field name="paid_fees"/>
+                        <field name="remaining_fees"/>
+                    </group>
+                </sheet>
+                 <footer>
+                    <button name="print_excel" type="object" string="Print Excel" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Student Excel Wizard Action View -->
+    <record id="excel_student_report_action" model="ir.actions.act_window">
+        <field name="name">Student Details</field>
+        <field name="res_model">student.excel</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

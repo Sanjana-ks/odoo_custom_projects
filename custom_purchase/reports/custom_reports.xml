@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <report
+            id="custom_purchase_order_report"
+            string="Custom Purchase Order"
+            model="purchase.order"
+            report_type="qweb-pdf"
+            file="custom_purchase.report_purchase_order"
+            name="custom_purchase.report_purchase_order"/>
+
+</odoo>

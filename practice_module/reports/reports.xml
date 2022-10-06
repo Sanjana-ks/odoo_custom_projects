@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="report_student_report_excel" model="ir.actions.report">
+        <field name="name">Excel Student Report</field>
+        <field name="model">student.excel</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">practice_module.report_student_record_excel</field>
+        <field name="report_file">practice_module.report_student_record_excel</field>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="report_department_report_excel" model="ir.actions.report">
+        <field name="name">Excel Department Report</field>
+        <field name="model">department</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">practice_module.report_department_record_excel</field>
+        <field name="report_file">practice_module.report_department_record_excel</field>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

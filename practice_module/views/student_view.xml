@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- Student List View -->
+    <record id="student_list_view" model="ir.ui.view">
+        <field name="name">student.list.view</field>
+        <field name="model">student</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="dob"/>
+                <field name="gender"/>
+                <field name="mobile"/>
+                <field name="department_id"/>
+                <field name="is_graduated"/>
+                <field name="admission"/>
+                <field name="fees"/>
+                <field name="remaining_fees"/>
+                <field name="student_marks_line"/>
+                <field name="student_subject_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Student Form View -->
+    <record id="st_form_view" model="ir.ui.view">
+        <field name="name">st.form.view</field>
+        <field name="model">student</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="%(practice_module.excel_student_report_action)d" string="Excel Student Report" type="action"/>
+                </header>
+                <sheet>
+                    <group colspan="4" col="4" string="Student Record">
+                        <field name="name" placeholder="Enter your first name"/>
+                        <field name="last_name" placeholder="Enter your first name"
+                            attrs = "{'invisible':[('name','=',False)],
+                                    'required':[('name','=',True)]}"/>
+                        <field name="dob" placeholder="Enter your date of birth"/>
+                        <field name="gender" placeholder="Choose your gender"/>
+                        <field name="mobile" placeholder="Enter your contact no."/>
+                        <field name="department_id" placeholder="Choose department"/>
+                        <field name="is_graduated" help="Select if the student has graduated"/>
+                        <field name="admission"/>
+                    </group>
+                    <group colspan="4" col="4"
+                        string="Fees Details">
+                        <field name="fees"/>
+                        <field name="paid_fees"/>
+                        <field name="remaining_fees"/>
+                    </group>
+                    <group>
+                        <field name="document"/>
+                    </group>
+                    <notebook>
+                        <page string="School Record">
+                            <field name="student_marks_line">
+                                <tree editable="bottom">
+                                    <field name="student_id" invisible="1"/>
+                                    <field name="class_name"/>
+                                    <field name="physics_marks"/>
+                                    <field name="chemistry_marks"/>
+                                    <field name="maths_marks"/>
+                                    <field name="english_marks"/>
+                                    <field name="total"/>
+                                    <field name="percent"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Subject Details">
+                            <field name="student_subject_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="department_id"/>
+                                    <field name="head"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Student Action View -->
+    <record id="action_student" model="ir.actions.act_window">
+        <field name="name">Student</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">student</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Student Search View -->
+    <record id="student_search_view" model="ir.ui.view">
+        <field name="name">student.search.view</field>
+        <field name="model">student</field>
+        <field name="arch" type="xml">
+            <search string="Search Student">
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="department_id"/>
+                <field name="mobile"/>
+                <filter string="Graduation" name="is_graduated" domain="[('is_graduated','=', 'True')]"/>
+                <filter string="Male" name="gender_male" domain="[('gender','=', 'male')]"/>
+                <filter string="Female" name="gender_female" domain="[('gender','=', 'female')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Department" name="department" domain="[]" context="{'group_by':'department_id'}"/>
+                    <filter string="Gender" name="gender" domain="[]" context="{'group_by':'gender'}"/>
+                    <filter string="Graduated" name="graduated" domain="[]" context="{'group_by':'is_graduated'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+</odoo>

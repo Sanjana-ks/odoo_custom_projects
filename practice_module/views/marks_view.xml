@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- Marks List View -->
+    <record id="marks_list_view" model="ir.ui.view">
+        <field name="name">marks.list.view</field>
+        <field name="model">marks</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="student_id" required="1"/>
+                <field name="class_name"/>
+                <field name="physics_marks"/>
+                <field name="chemistry_marks"/>
+                <field name="maths_marks"/>
+                <field name="english_marks"/>
+                <field name="total"/>
+                <field name="percent"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Marks Form View -->
+    <record id="marks_form_view" model="ir.ui.view">
+        <field name="name">marks.form.view</field>
+        <field name="model">marks</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group colspan="4" col="4">
+                        <field name="student_id"/>
+                        <field name="class_name"/>
+                        <field name="physics_marks"/>
+                        <field name="chemistry_marks"/>
+                        <field name="maths_marks"/>
+                        <field name="english_marks"/>
+                        <field name="total"/>
+                        <field name="percent"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Marks Action View -->
+    <record id="action_marks" model="ir.actions.act_window">
+        <field name="name">Marks</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">marks</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Marks Search View -->
+    <record id="marks_search_view" model="ir.ui.view">
+        <field name="name">marks.search.view</field>
+        <field name="model">marks</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="student_id"/>
+                <field name="class_name"/>
+                <filter string="Class 10th" name="class_10" domain="[('class_name','=', 'class_x')]"/>
+                <filter string="Class 12th" name="class_12" domain="[('class_name','=', 'class_xii')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Student" name="student_name" domain="[]" context="{'group_by':'student_id'}"/>
+                    <filter string="Class" name="class" domain="[]" context="{'group_by':'class_name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+</odoo>

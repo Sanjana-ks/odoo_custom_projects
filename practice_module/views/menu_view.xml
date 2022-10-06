@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <menuitem id="student_root_menu" name="Student"/>
+
+    <menuitem id="student_sub_menu3" name="Department" parent="student_root_menu"/>
+    <menuitem id="student_menu3" name="Department Details" parent="student_sub_menu3" action="action_department"/>
+
+    <menuitem id="student_sub_menu4" name="Subject" parent="student_root_menu"/>
+    <menuitem id="student_menu4" name="Subject Details" parent="student_sub_menu4" action="action_subject"/>
+
+    <menuitem id="student_sub_menu1" name="Student Details" parent="student_root_menu"/>
+    <menuitem id="student_menu1" name="Student Data" parent="student_sub_menu1" action="action_student"
+            groups="group_test_security"/>
+
+    <menuitem id="student_sub_menu2" name="Test Security" parent="student_root_menu"/>
+    <menuitem id="student_menu2" name="Test" parent="student_sub_menu2" action="action_test"/>
+
+</odoo>
