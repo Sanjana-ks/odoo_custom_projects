@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
 
+<!--    student report excel-->
     <record id="report_student_report_excel" model="ir.actions.report">
         <field name="name">Excel Student Report</field>
         <field name="model">student.excel</field>
@@ -10,6 +11,7 @@
         <field name="binding_type">report</field>
     </record>
 
+<!--    department report excel-->
     <record id="report_department_report_excel" model="ir.actions.report">
         <field name="name">Excel Department Report</field>
         <field name="model">department</field>
