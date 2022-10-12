@@ -4,4 +4,3 @@ access_subject_user,subject.user,model_subject,base.group_user,1,1,1,1
 access_student_user,student.user,model_student,base.group_user,1,1,1,1
 access_marks_user,marks.user,model_marks,base.group_user,1,1,1,1
 access_test_user,test.user,model_test,,1,1,1,1
-

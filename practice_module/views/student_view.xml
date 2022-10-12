@@ -83,14 +83,6 @@
         </field>
     </record>
 
-    <!-- Student Action View -->
-    <record id="action_student" model="ir.actions.act_window">
-        <field name="name">Student</field>
-        <field name="type">ir.actions.act_window</field>
-        <field name="res_model">student</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-
     <!-- Student Search View -->
     <record id="student_search_view" model="ir.ui.view">
         <field name="name">student.search.view</field>
@@ -112,5 +104,75 @@
             </search>
         </field>
     </record>
+
+    <!-- Student Kanban View -->
+    <record model="ir.ui.view" id="view_student_kanban">
+        <field name="name">view.student.kanban</field>
+        <field name="model">student</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <strong>
+                                    <field name="name"/>
+                            </strong>
+                            <li>
+                                Branch: <field name="department_id"/>
+                            </li>
+                            <li>
+                                Contact No.: <field name="mobile"/>
+                            </li>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Student Pivot View -->
+    <record model="ir.ui.view" id="view_student_pivot">
+        <field name="name">view.student.pivot</field>
+        <field name="model">student</field>
+        <field name="arch" type="xml">
+        <pivot>
+            <field name="name" type="row"/>
+            <field name="admission" type="col" interval="day"/>
+        </pivot>
+        </field>
+    </record>
+
+    <!-- Student Calendar View -->
+    <record model="ir.ui.view" id="view_student_calendar">
+        <field name="name">view.student.calendar</field>
+        <field name="model">student</field>
+        <field name="arch" type="xml">
+        <calendar string="Admission Calendar" date_start="admission" mode="month" color="name">
+            <field name="name"/>
+            <field name="department_id"/>
+        </calendar>
+        </field>
+    </record>
+
+    <!-- Student Graph View -->
+    <record model="ir.ui.view" id="view_student_graph">
+        <field name="name">view.student.graph</field>
+        <field name="model">student</field>
+        <field name="arch" type="xml">
+        <graph stacked='False'>
+            <field name="department_id"/>
+            <field name="fees" type="measure"/>
+        </graph>
+        </field>
+    </record>
+
+    <!-- Student Action View -->
+    <record id="action_student" model="ir.actions.act_window">
+        <field name="name">Student</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">student</field>
+        <field name="view_mode">tree,form,kanban,pivot,calendar,graph</field>
+    </record>
+
 
 </odoo>

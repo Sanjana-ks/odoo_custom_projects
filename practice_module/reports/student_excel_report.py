@@ -5,7 +5,7 @@ from odoo import models
 
 class StudentRecordExcel(models.AbstractModel):
     _name = "report.practice_module.report_student_record_excel"
-    _inherit = "report.odoo_report_xlsx.abstract"
+    _inherit = "report.report_xlsx.abstract"
 
     def generate_xlsx_report(self, workbook, data, student):
         print('..........', data['form_data'], student)

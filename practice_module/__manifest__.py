@@ -7,7 +7,7 @@
     'category': 'Training ',
     'summary': 'Learning Odoo',
     'description': 'This is the practice module on working with odoo ',
-    'depends': ["base", 'odoo_report_xlsx'],
+    'depends': ["base", 'report_xlsx'],
     'data': [
         "security/ir.model.access.csv",
         "security/security.xml",

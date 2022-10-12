@@ -9,6 +9,12 @@ class CustomVendorBillLine(models.Model):
     custom_vendor_bill_line = fields.One2many('vendor.bill.line', 'vendor_bill_id', string='Custom Invoice Lines')
 
 
+class SaleInvoiceLine(models.Model):
+    _inherit = "account.move.line"
+
+    discount_amount = fields.Float(string='Discount Amount')
+
+
 class VendorBillLine(models.Model):
     _name = 'vendor.bill.line'
     _description = 'Vendor Bill Line'
