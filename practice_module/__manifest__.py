@@ -5,7 +5,7 @@
     'version': '16.1.1',
     'sequence': '1',
     'category': 'Git Submodule Check ',
-    'summary': 'Learning Odoo',
+    'summary': 'Learning Odoo and Github Submodulessssssssssssssssssssss',
     'description': 'This is the practice module on working with odoo. Testing this module.',
     'depends': ["base", 'report_xlsx'],
     'data': [
