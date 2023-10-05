@@ -2,9 +2,7 @@ name: 'Submodules Sync'
 
 on:
   # Allows you to run this workflow manually from the Actions tab or through HTTP API
-  push:
-    branches:
-      - master
+  workflow_dispatch:
 
 jobs:
   sync:
