@@ -6,7 +6,7 @@
     'sequence': '1',
     'category': 'Training ',
     'summary': 'Learning Odoo',
-    'description': 'This is the practice module on working with odoo ',
+    'description': 'This is the practice module on working with odoo. Testing this module.',
     'depends': ["base", 'report_xlsx'],
     'data': [
         "security/ir.model.access.csv",
