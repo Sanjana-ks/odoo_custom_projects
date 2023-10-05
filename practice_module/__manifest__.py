@@ -5,8 +5,8 @@
     'version': '16.1.1.5',
     'sequence': '1',
     'category': 'Git Submodule Check ',
-    'summary': 'Learning Odoo and Github Submodules and Actions.',
-    'description': 'This is the practice module on working with odoo. Testing this module.',
+    'summary': 'Learning Odoo and Github Submodules & Actions.',
+    'description': 'Practicing github actions and submodules',
     'depends': ["base", 'report_xlsx'],
     'data': [
         "security/ir.model.access.csv",
