@@ -2,7 +2,7 @@
 
 {
     'name': 'Practice Module',
-    'version': '16.1.1',
+    'version': '16.1.1.5',
     'sequence': '1',
     'category': 'Git Submodule Check ',
     'summary': 'Learning Odoo and Github Submodules and Actions.',
