@@ -2,7 +2,7 @@
 
 {
     'name': 'Practice Module',
-    'version': '1.1',
+    'version': '16.1.1',
     'sequence': '1',
     'category': 'Training ',
     'summary': 'Learning Odoo',
