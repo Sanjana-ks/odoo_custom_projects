@@ -26,7 +26,7 @@ jobs:
 
       - name: Trigger workflow in practice_module
         run: |
-          curl -X POST https://api.github.com/repos/Sanjana-ks/practice_module/actions/workflows/staging.yml/dispatches \
+          curl -X POST https://api.github.com/repos/Sanjana-ks/practice_module/actions/workflows/staging-1.yml/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.MY_TOKEN }} \
           --data '{"ref": "staging-1"}'
