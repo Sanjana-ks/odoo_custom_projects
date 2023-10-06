@@ -6,7 +6,7 @@
     'sequence': '1',
     'category': 'Git Submodule Check ',
     'summary': 'Learning Odoo and Github Submodules & Actions.',
-    'description': 'SuccessFullllllllllllllllll',
+    'description': 'Github Action created!!',
     'depends': ["base", 'report_xlsx'],
     'data': [
         "security/ir.model.access.csv",
