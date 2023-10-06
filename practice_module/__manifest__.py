@@ -6,7 +6,7 @@
     'sequence': '1',
     'category': 'Git Submodule Check ',
     'summary': 'Learning Odoo and Github Submodules & Actions.',
-    'description': 'Github Action created for multi-repo!!',
+    'description': 'Github Action created for multiple child repo successfully!!',
     'depends': ["base", 'report_xlsx'],
     'data': [
         "security/ir.model.access.csv",
