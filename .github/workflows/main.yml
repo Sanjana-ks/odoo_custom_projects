@@ -22,4 +22,4 @@ jobs:
           curl -X POST https://api.github.com/repos/Sanjana-ks/custom_purchase/actions/workflows/main.yml/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.MY_TOKEN }} \
-          --data '{"ref": "master"}'
+          --data '{"ref": "main"}'
