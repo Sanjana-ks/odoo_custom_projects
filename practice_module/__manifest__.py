@@ -3,7 +3,7 @@
 {
     'name': 'Practice Module',
     'version': '16.1.1.2',
-    'sequence': '1',
+    'sequence': '10',
     'category': 'Git Submodule Check ',
     'summary': 'Learning Odoo and Github Submodules & Actions.',
     'description': 'Github Action created for multi-repo!!',
