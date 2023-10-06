@@ -1,33 +1,19 @@
-name: 'Submodules Sync'
+name: 'Trigger Repo on child'
 
 on:
-  # Allows you to run this workflow manually from the Actions tab or through HTTP API
-  workflow_dispatch:
+  push:
+    branches:
+      - master
 
 jobs:
-  sync:
-    name: 'Submodules Sync'
+  build:
     runs-on: ubuntu-latest
-
-    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
-    defaults:
-      run:
-        shell: bash
-
     steps:
-    # Checkout the repository to the GitHub Actions runner
-    - name: Checkout
-      uses: actions/checkout@master
-
-    # Update references
-    - name: Git Sumbodule Update
-      run: |
-        git pull --recurse-submodules
-        git submodule update --remote --recursive
-
-    - name: Commit update
-      run: |
-        git config --global user.name 'Sanjana-ks'
-        git config --global user.email 'sanjana.gharewal@ksolves.com'
-        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-        git commit -am "Auto updated submodule references" && git push || echo "No changes to commit"
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Test
+        run: |
+          curl -X POST https://api.github.com/repos/:Sanjana-ks/:custom_purchase/dispatches \
+          -H 'Accept: application/vnd.github.everest-preview+json' \
+          -u ${{ secrets.GITHUB_TOKEN }} \
+          --data '{"event_type": "Trigger Workflow", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+      - uses: actions/checkout@v3
