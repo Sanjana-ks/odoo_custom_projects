@@ -4,10 +4,27 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
+    inputs:
+      workflow_02:
+        description: 'ًWorkflow 2 which will be triggered'
+        required: true
+        default: 'Submodules Sync'
+  
+      workflow2_github_account:
+        description: 'GitHub Account Owner'
+        required: true
+        default: ':Sanjana-ks'
+  
+      workflow2_repo_github:
+        description: 'repo-name'
+        required: true
+        default: ':custom_purchase' 
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Test
