@@ -9,17 +9,7 @@ on:
       workflow_02:
         description: 'ًWorkflow 2 which will be triggered'
         required: true
-        default: 'Submodules Sync'
-  
-      workflow2_github_account:
-        description: 'GitHub Account Owner'
-        required: true
-        default: ':Sanjana-ks'
-  
-      workflow2_repo_github:
-        description: 'repo-name'
-        required: true
-        default: ':custom_purchase' 
+        default: 'Submodules Sync' 
 
 jobs:
   build:
@@ -27,10 +17,9 @@ jobs:
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Test
+      - name: Trigger workflow in custom_purchase
         run: |
-          curl -X POST https://api.github.com/repos/:Sanjana-ks/:custom_purchase/dispatches \
+          curl -X POST https://api.github.com/repos/Sanjana-ks/custom_purchase/actions/workflows/Submodules%20Sync.yml/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
-          -u ${{ secrets.GITHUB_TOKEN }} \
-          --data '{"event_type": "Trigger Workflow", "client_payload": { "repository": "'"custom_purchase"'" }}'
-      - uses: actions/checkout@v3
+          -u ${{ secrets.MY_TOKEN }} \
+          --data '{"ref": "master"}'
