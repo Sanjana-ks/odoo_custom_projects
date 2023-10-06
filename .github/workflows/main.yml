@@ -32,5 +32,5 @@ jobs:
           curl -X POST https://api.github.com/repos/:Sanjana-ks/:custom_purchase/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.GITHUB_TOKEN }} \
-          --data '{"event_type": "Trigger Workflow", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+          --data '{"event_type": "Trigger Workflow", "client_payload": { "repository": "'"custom_purchase"'" }}'
       - uses: actions/checkout@v3
