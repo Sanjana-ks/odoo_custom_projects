@@ -19,7 +19,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Trigger workflow in custom_purchase
         run: |
-          curl -X POST https://api.github.com/repos/Sanjana-ks/custom_purchase/actions/workflows/Submodules%20Sync.yml/dispatches \
+          curl -X POST https://api.github.com/repos/Sanjana-ks/custom_purchase/actions/workflows/main.yml/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.MY_TOKEN }} \
           --data '{"ref": "master"}'
