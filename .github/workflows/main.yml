@@ -70,4 +70,5 @@ jobs:
 
           if [[ "$practice_module_status" == "failure" ]]; then
             echo "Practice Module Workflow has failed"
+          fi
         shell: bash
