@@ -2,7 +2,7 @@
 
 {
     'name': 'Custom Purchase',
-    'version': '1.1',
+    'version': '1.1.0.0',
     'sequence': '1',
     'category': 'Training',
     'summary': 'Learning Odoo',
