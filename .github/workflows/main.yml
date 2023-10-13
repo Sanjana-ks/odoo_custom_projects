@@ -58,11 +58,20 @@ jobs:
 
       - name: Get Workflow Status
         run: |
-          custom_purchase_status=$(curl -s -X GET "https://api.github.com/repos/Sanjana-ks/custom_purchase/actions/runs/${{ steps.custom_purchase.outputs.custom_purchase_run_id }}" -H "Authorization: token ${{ secrets.MY_TOKEN }}" | jq -r .conclusion)
-          practice_module_status=$(curl -s -X GET "https://api.github.com/repos/Sanjana-ks/practice_module/actions/runs/${{ steps.practice_module.outputs.practice_module_run_id }}" -H "Authorization: token ${{ secrets.MY_TOKEN }}" | jq -r .conclusion)
+          custom_purchase_status="in_progress"
+          practice_module_status="in_progress"
 
-          echo "Custom Purchase Workflow Status: $custom_purchase_status"
-          echo "Practice Module Workflow Status: $practice_module_status"
+          while [[ "$custom_purchase_status" == "in_progress" || "$practice_module_status" == "in_progress" ]]; do
+            custom_purchase_status=$(curl -s -X GET "https://api.github.com/repos/Sanjana-ks/custom_purchase/actions/runs/${{ steps.custom_purchase.outputs.custom_purchase_run_id }}" -H "Authorization: token ${{ secrets.MY_TOKEN }}" | jq -r .conclusion)
+            practice_module_status=$(curl -s -X GET "https://api.github.com/repos/Sanjana-ks/practice_module/actions/runs/${{ steps.practice_module.outputs.practice_module_run_id }}" -H "Authorization: token ${{ secrets.MY_TOKEN }}" | jq -r .conclusion)
+
+            echo "Custom Purchase Workflow Status: $custom_purchase_status"
+            echo "Practice Module Workflow Status: $practice_module_status"
+
+            if [[ "$custom_purchase_status" == "in_progress" || "$practice_module_status" == "in_progress" ]]; then
+              sleep 60  # Wait for a minute before checking the status again.
+            fi
+          done
 
           if [[ "$custom_purchase_status" == "failure" ]]; then
             echo "Custom Purchase Workflow has failed"
