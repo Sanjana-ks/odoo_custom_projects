@@ -4,7 +4,7 @@
     'name': 'Practice Module',
     'version': '16.1.1.2',
     'sequence': '1',
-    'category': 'Git Submodule Check ',
+    'category': 'Git Submodule Checking',
     'summary': 'Learning Odoo and Github Submodules & Actions.',
     'description': 'Github Action created for multiple child repo successfully!!',
     'depends': ["base", 'report_xlsx'],
