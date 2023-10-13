@@ -3,7 +3,7 @@
 {
     'name': 'Custom Purchase',
     'version': '1.1.0.0',
-    'sequence': '1',
+    'sequence': '100',
     'category': 'Training',
     'summary': 'Learning Odoo',
     'description': 'This is the practice module on working with odoo ',
