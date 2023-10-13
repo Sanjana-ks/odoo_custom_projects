@@ -15,18 +15,59 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    # steps:
+    #   # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    #   - name: Trigger workflow in custom_purchase
+    #     run: |
+    #       curl -X POST https://api.github.com/repos/Sanjana-ks/custom_purchase/actions/workflows/main.yml/dispatches \
+    #       -H 'Accept: application/vnd.github.everest-preview+json' \
+    #       -u ${{ secrets.MY_TOKEN }} \
+    #       --data '{"ref": "main"}'
+
+    #   - name: Trigger workflow in practice_module
+    #     run: |
+    #       curl -X POST https://api.github.com/repos/Sanjana-ks/practice_module/actions/workflows/staging-1.yml/dispatches \
+    #       -H 'Accept: application/vnd.github.everest-preview+json' \
+    #       -u ${{ secrets.MY_TOKEN }} \
+    #       --data '{"ref": "staging-1"}'
+
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Trigger workflow in custom_purchase
         run: |
-          curl -X POST https://api.github.com/repos/Sanjana-ks/custom_purchase/actions/workflows/main.yml/dispatches \
-          -H 'Accept: application/vnd.github.everest-preview+json' \
-          -u ${{ secrets.MY_TOKEN }} \
-          --data '{"ref": "main"}'
+          response=$(curl -X POST https://api.github.com/repos/Sanjana-ks/custom_purchase/actions/workflows/main.yml/dispatches \
+            -H 'Accept: application/vnd.github.everest-preview+json' \
+            -u ${{ secrets.MY_TOKEN }} \
+            --data '{"ref": "main"}')
+          run_id=$(echo $response | jq -r '.id')
+          echo "Custom Purchase Workflow Run ID: $run_id"
+          echo "::set-output name=custom_purchase_run_id::$run_id"
+        shell: bash
+        id: custom_purchase
 
       - name: Trigger workflow in practice_module
         run: |
-          curl -X POST https://api.github.com/repos/Sanjana-ks/practice_module/actions/workflows/staging-1.yml/dispatches \
-          -H 'Accept: application/vnd.github.everest-preview+json' \
-          -u ${{ secrets.MY_TOKEN }} \
-          --data '{"ref": "staging-1"}'
+          response=$(curl -X POST https://api.github.com/repos/Sanjana-ks/practice_module/actions/workflows/staging-1.yml/dispatches \
+            -H 'Accept: application/vnd.github.everest-preview+json' \
+            -u ${{ secrets.MY_TOKEN }} \
+            --data '{"ref": "staging-1"}')
+          run_id=$(echo $response | jq -r '.id')
+          echo "Practice Module Workflow Run ID: $run_id"
+          echo "::set-output name=practice_module_run_id::$run_id"
+        shell: bash
+        id: practice_module
+
+      - name: Get Workflow Status
+        run: |
+          custom_purchase_status=$(curl -s -X GET "https://api.github.com/repos/Sanjana-ks/custom_purchase/actions/runs/${{ steps.custom_purchase.outputs.custom_purchase_run_id }}" -H "Authorization: token ${{ secrets.MY_TOKEN }}" | jq -r .conclusion)
+          practice_module_status=$(curl -s -X GET "https://api.github.com/repos/Sanjana-ks/practice_module/actions/runs/${{ steps.practice_module.outputs.practice_module_run_id }}" -H "Authorization: token ${{ secrets.MY_TOKEN }}" | jq -r .conclusion)
+
+          echo "Custom Purchase Workflow Status: $custom_purchase_status"
+          echo "Practice Module Workflow Status: $practice_module_status"
+
+          if [[ "$custom_purchase_status" == "failure" ]]; then
+            echo "Custom Purchase Workflow has failed"
+          fi
+
+          if [[ "$practice_module_status" == "failure" ]]; then
+            echo "Practice Module Workflow has failed"
+        shell: bash
